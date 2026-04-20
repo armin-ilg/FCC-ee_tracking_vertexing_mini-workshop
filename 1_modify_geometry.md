@@ -64,8 +64,7 @@ Let's clone [k4geo](https://github.com/key4hep/k4geo.git) (which hosts the detec
 ```
 git clone https://github.com/armin-ilg/lcgeo.git k4geo
 cd k4geo
-git switch -c curved_vertex_correction
-
+git switch -c curved_vertex_correction --track origin/curved_vertex_correction 
 mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../InstallArea -DBoost_NO_BOOST_CMAKE=ON -D INSTALL_BEAMPIPE_STL_FILES=ON
@@ -91,7 +90,8 @@ sh scripts/save_detector_to_root.sh FCCee/ALLEGRO/compact/ALLEGRO_o1_v03/ALLEGRO
 
 You'll see how the detector is built component by component. After the script is finished, download the resulting file (`detector_dd4hep2root.root`) to your laptop and open it again in root (I recommend the root web viewer: https://root.cern/js/latest/). Look at different parts of the detector by browsing the hierarchy and right-clicking and doing `draw -> all`. If something doesn't appear then try enabling/disabling 'logical vis' and 'daughters' in the right-click menu in the hierarchy. Try to draw nicely the vertex detector. How many layers close to the beam pipe does it have? What's their layout?
 
-PICTURE
+<img width="1168" height="990" alt="Capture d’écran 2026-04-20 à 14 52 52" src="https://github.com/user-attachments/assets/3511b7d7-7c04-4c8d-a765-4990ef137ab0" />
+<img width="853" height="310" alt="Capture d’écran 2026-04-20 à 14 53 13" src="https://github.com/user-attachments/assets/4dea513a-d95b-40e1-a8e1-2b62947e20d9" />
 
 
 # Making changes to a detector model
@@ -106,5 +106,4 @@ sh scripts/save_detector_to_root.sh FCCee/ALLEGRO/compact/ALLEGRO_o1_v03/ALLEGRO
 ```
 
 Download the resulting ALLEGRO_ultraLightInnerVertex_dd4hep2root.root file and investigate the ultra-light inner vertex detector.
-
-PICTURE
+<img width="708" height="496" alt="Capture d’écran 2026-04-20 à 15 24 58" src="https://github.com/user-attachments/assets/d15d22ae-0539-4787-afc4-dabb3d5e5967" />
