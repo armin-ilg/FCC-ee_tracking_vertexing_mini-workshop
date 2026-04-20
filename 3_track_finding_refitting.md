@@ -51,6 +51,9 @@ ddsim --steeringFile $STEERING_FILE \
 ```
 
 ## Run GGTF track finder (basically following `Tracking/test/testTrackFinder/test_trackFinder.sh`)
+
+ADD DESCRIPTION, GIVE REFERENCES AND CREDITS
+
 ```
 MODEL_PATH=build/Tracking/test/inputFiles/SimpleGatrIDEAv3o1.onnx
 
@@ -61,9 +64,19 @@ k4run Tracking/test/testTrackFinder/runTestTrackFinder.py --inputFile Tracking/t
 ```
 
 ## Run GenFit2 track fitter
+
+ADD DESCRIPTION, GIVE REFERENCES AND CREDITS
+
 ```
 k4run Tracking/test/testTrackFitter/runTestTrackFitter.py --inputFile Tracking/test/testTrackFinder/out_tracks.root --outputFile Tracking/test/testTrackFitter/out_tracks_refitted.root
 ```
+
+The results can be validated with a simple script (thanks to Andrea de Vita (CERN) for sharing it!):
+```
+SCRIPT
+```
+
+Beyond doing simple checks like this, work is ongoing to integrate tracking validation using CI/CD directly into Key4hep. The validation code will be hosted in [k4DetectorPerformance](https://github.com/key4hep/k4DetectorPerformance). A work-in-progress version of this code can be found under https://github.com/ArinaPon/k4DetectorPerformance/tree/pr-tracking-validation. More information on this can be found in [Arina Ponomareva's talk from 1st of April](https://indico.cern.ch/event/1664310/#48-tracking-performance-and-va).
 
 ## Get tracking validation code
 ```
