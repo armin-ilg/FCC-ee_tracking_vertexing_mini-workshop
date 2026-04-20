@@ -1,4 +1,4 @@
-# Initial steps
+### Initial steps
 
 Log in to lxplus
 ```
@@ -20,7 +20,7 @@ or `k4run` that is used to run jobs using Gaudi functionals:
 k4run --help
 ```
 
-# Note on other tutorials
+### Note on other tutorials
 
 Documentation on Key4hep can be found under https://key4hep.github.io/key4hep-doc/main/index.html. There are many tutorials, but some of them sadly are a bit outdated or not very useful anymore. There are also FCC tutorials (https://hep-fcc.github.io/fcc-tutorials/main/index.html) that complement the Key4hep ones. What we'll do is nitpicking certain parts of these tutorials that are useful for tracking detector R&D. If you want to learn more, please check out these tutorials in more details!
 
@@ -45,21 +45,22 @@ edm4hep2json -e 0  IDEA_sim_digi_reco.root
 ```
 Download this file and go to the Phoenix visualisation tool on [https://fccsw.web.cern.ch/fccsw/phoenix/fccee-idea/o1_v03](https://fccsw.web.cern.ch/fccsw/phoenix/fccee-idea/o1_v03). Load the json event (under 'import and export options') and open the detector (with 'Geometry clipping'). You should be able to see a track and associated calorimetry clusters!
 
-PICTURE
+<img width="1258" height="441" alt="Capture d’écran 2026-04-20 à 11 41 22" src="https://github.com/user-attachments/assets/cbe2f6e4-2bf7-4f8c-a387-69b82face4b4" />
 
 Note: Almost all MC event generators are included in Key4hep. It is rather easy to generate your own `hepevt` files! See more [here](https://hep-fcc.github.io/fcc-tutorials/main/fast-sim-and-analysis/FccFastSimGeneration.html).
 
 Now that we managed to generate full simulation samples from the central release, let's try to look a bit in more detail at the detector model and modify it ourselves!
+
 
 # Cloning k4geo and compiling it locally
 
 Let's clone [k4geo](https://github.com/key4hep/k4geo.git) (which hosts the detector geometry descriptions and algorithms to build the detectors using `DD4hep`). We actually use my branch of k4geo that updates the vertex detector and silicon wrapper used in IDEA and ALLEGRO. The pull request is not yet merged, but we can check it out in this way!
 
 ```
-git clone https://github.com/armin-ilg/lcgeo.git
+git clone https://github.com/armin-ilg/lcgeo.git k4geo
+cd k4geo
 git switch -c curved_vertex_correction
 
-cd k4geo
 mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../InstallArea -DBoost_NO_BOOST_CMAKE=ON -D INSTALL_BEAMPIPE_STL_FILES=ON
@@ -73,6 +74,7 @@ k4_local_repo
 
 The `k4_local_repo` command is important as we need to specify properly that we don't use k4geo from the Key4hep release, but instead our own, local k4geo that we just installed. 
 
+
 # Understanding how a detector is built in DD4hep/k4geo
 
 Let's now look in more detail how the detectors are built, using ALLEGRO as an example. Open the file `FCCee/ALLEGRO/compact/ALLEGRO_o1_v03/ALLEGRO_o1_v03.xml` with your favourite file viewer. Also check out `FCCee/ALLEGRO/compact/ALLEGRO_o1_v03/DectDimensions.xml` which defines many dimensions of the ALLEGRO detector and its subdetectors. 
@@ -83,6 +85,9 @@ sh scripts/save_detector_to_root.sh FCCee/ALLEGRO/compact/ALLEGRO_o1_v03/ALLEGRO
 ```
 
 You'll see how the detector is built component by component. After the script is finished, download the resulting file (`detector_dd4hep2root.root`) to your laptop and open it again in root (I recommend the root web viewer: https://root.cern/js/latest/). Look at different parts of the detector by browsing the hierarchy and right-clicking and doing `draw -> all`. If something doesn't appear then try enabling/disabling 'logical vis' and 'daughters' in the right-click menu in the hierarchy. Try to draw nicely the vertex detector. How many layers close to the beam pipe does it have? What's their layout?
+
+PICTURE
+
 
 # Making changes to a detector model
 
@@ -96,3 +101,5 @@ sh scripts/save_detector_to_root.sh FCCee/ALLEGRO/compact/ALLEGRO_o1_v03/ALLEGRO
 ```
 
 Download the resulting ALLEGRO_ultraLightInnerVertex_dd4hep2root.root file and investigate the ultra-light inner vertex detector.
+
+PICTURE
