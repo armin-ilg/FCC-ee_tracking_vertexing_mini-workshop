@@ -5,9 +5,14 @@ Log in to lxplus
 ssh -XY user@lxplus.cern.ch
 ```
 
-Source the Key4hep stable release
+The Key4hep stable release can be sourced in the following way (not used in this tutorial!)
 ```
 source /cvmfs/sw.hsf.org/key4hep/setup.sh
+```
+
+Instead, we use a specific version of the nightly release:
+```
+source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh -r 2026-04-20
 ```
 
 You should now be able to access all the Key4hep tools, such as e.g. `ddsim` that is used to run the full simulation:
@@ -68,8 +73,8 @@ make -j4 install
 cd ../InstallArea
 source bin/thisk4geo.sh
 cd ..
-export K4GEO=$(pwd)
-k4_local_repo
+
+k4_local_repo InstallArea/
 ```
 
 The `k4_local_repo` command is important as we need to specify properly that we don't use k4geo from the Key4hep release, but instead our own, local k4geo that we just installed. 
