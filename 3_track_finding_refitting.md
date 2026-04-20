@@ -10,6 +10,11 @@ Source the Key4hep nightly
 source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh
 ```
 
+The exact release that we use is 
+```
+source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh -r 2026-04-20
+```
+
 Clone k4RecTracker
 ```
 git clone https://github.com/andread3vita/k4RecTracker.git
