@@ -35,6 +35,8 @@ cd k4RecTracker
 
 # GGTF track finding and GenFit2 track fitting
 
+The whole GGTF+GenFit2 chain is described in detail in (this talk from the 2026 FCC Physics Workshop)[https://indico.cern.ch/event/1588696/timetable/#80-tracking-tools-status-and-p].
+
 ## Generate SIM sample
 ```
 XML_FILE=$K4GEO/FCCee/IDEA/compact/IDEA_o1_v03/IDEA_o1_v03.xml
@@ -52,8 +54,11 @@ ddsim --steeringFile $STEERING_FILE \
 
 ## Run GGTF track finder (basically following `Tracking/test/testTrackFinder/test_trackFinder.sh`)
 
-ADD DESCRIPTION, GIVE REFERENCES AND CREDITS
+Geometric Graph Track Finding (GGTF) is a ML-based tracking algorithm that can deal with an arbitrary detector geometry. 
+<img width="1197" height="442" alt="doi:10.1051/epjconf/202533701125" src="https://github.com/user-attachments/assets/2eb09c29-f38e-4d9d-877b-8e31a6cd40d7" />
+Please check out the reference publication ((doi:10.1051/epjconf/202533701125)[https://doi.org/10.1051/epjconf/202533701125]) for more details.
 
+We can use GGTF for track finding with the following commands:
 ```
 MODEL_PATH=build/Tracking/test/inputFiles/SimpleGatrIDEAv3o1.onnx
 
@@ -65,7 +70,7 @@ k4run Tracking/test/testTrackFinder/runTestTrackFinder.py --inputFile Tracking/t
 
 ## Run GenFit2 track fitter
 
-ADD DESCRIPTION, GIVE REFERENCES AND CREDITS
+GenFit2 (doi:10.48550/arXiv.1902.04405)[https://doi.org/10.48550/arXiv.1902.04405] provides track representation, track-fitting algorithms and can visualise graphically tracks and detectors (not used in our case) and is also detector agnostic. It features a Deterministic Annealing Fitter that can solve the left-right ambiguity present e.g. in drift chambers. GenFit2 track refitting is now being implemented in k4RecTracker by Andrea de Vita (CERN) and is soon usable for everyone. Let's refit the GGTF-built tracks with GenFit2 now!
 
 ```
 k4run Tracking/test/testTrackFitter/runTestTrackFitter.py --inputFile Tracking/test/testTrackFinder/out_tracks.root --outputFile Tracking/test/testTrackFitter/out_tracks_refitted.root
