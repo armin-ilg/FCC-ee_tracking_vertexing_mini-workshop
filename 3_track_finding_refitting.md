@@ -19,7 +19,7 @@ Clone k4RecTracker
 ```
 git clone https://github.com/andread3vita/k4RecTracker.git
 cd k4RecTracker
-git checkout 52fb4662fd139a52a025f886a21b97c87350c4fe # This is the commit that is currently working
+git checkout ef99ca0b73336437777727b1d5f90a39c7e10738 # This is the commit that is tested to work
 ```
 
 And compile k4RecTracker
