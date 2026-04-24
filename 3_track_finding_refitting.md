@@ -107,13 +107,11 @@ Now check out the output plot (D0_Z0_pT_resolution_and_chi2_p_value_log_likeliho
 <img width="2800" height="600" alt="D0_Z0_pT_resolution_and_chi2_p_value_log_likelihood" src="https://github.com/user-attachments/assets/4159c46d-bcce-4239-8eb2-8ce010c2e6ac" />
 Since we generated 10 GeV muons uniformly in phi and cos(theta), to get a useful performance estimation, we'd need to generate more particles and bin in cos(theta).
 
-Beyond doing simple checks like this, work is ongoing to integrate tracking validation using CI/CD directly into Key4hep. The validation code will be hosted in [k4DetectorPerformance](https://github.com/key4hep/k4DetectorPerformance). A work-in-progress version of this code can be found under https://github.com/ArinaPon/k4DetectorPerformance/tree/pr-tracking-validation. More information on this can be found in [Arina Ponomareva's talk from 1st of April](https://indico.cern.ch/event/1664310/#48-tracking-performance-and-va).
 
+## Proper tracking validation code
 
+Beyond doing simple checks like this, work is ongoing to integrate tracking validation using CI/CD directly into Key4hep. The validation code will be hosted in [k4DetectorPerformance](https://github.com/key4hep/k4DetectorPerformance). A work-in-progress version of this code can be found under https://github.com/ArinaPon/k4DetectorPerformance/tree/pr-tracking-validation. More information on this can be found in [Arina Ponomareva's talk from 1st of April](https://indico.cern.ch/event/1664310/#48-tracking-performance-and-va). Let's give it a first go. Clone and install the repo:
 
-
-
-## Get tracking validation code
 ```
 cd ..
 git clone git@github.com:ArinaPon/k4DetectorPerformance.git
@@ -128,9 +126,14 @@ make install -j 8
 cd ..
 ```
 
-## Run tracking validation code
+and run the tracking validation on the file we previously created in refitting:
 ```
-k4run TrackingPerformance/test/runTrackingValidation.py --inputFile ~/k4RecTracker/Tracking/test/testTrackFinder/out_tracks_refitted.root --runDigi 0 --runFinder 0 --runFitter 0 --runPerfectTracking 0 --runValidation 1 --doPerfectFit 1
+k4run TrackingPerformance/test/runTrackingValidation.py --inputFile ../k4RecTracker/Tracking/test/testTrackFitter/out_tracks_refitted.root --runDigi 0 --runFinder 0 --runFitter 0 --runPerfectTracking 0 --runValidation 1 --doPerfectFit 0
 ```
 
-# Looking at the results!!!
+The results are saved under `validation.root`:
+<img width="2303" height="721" alt="Capture d’écran 2026-04-24 à 11 56 32" src="https://github.com/user-attachments/assets/843884c5-de28-42f9-ae5c-63ba07c07d16" />
+<img width="2296" height="748" alt="Capture d’écran 2026-04-24 à 11 56 53" src="https://github.com/user-attachments/assets/cf4e61a2-5e1d-46fd-9b71-53ba93272664" />
+<img width="2298" height="719" alt="Capture d’écran 2026-04-24 à 11 57 00" src="https://github.com/user-attachments/assets/04d0efe4-905f-48ab-8cb3-e0b2a26aaee1" />
+
+`k4DetectorPerformance` allows you to run the whole SIM+track fitting+track refitting+validation chain with one command, try this if your have more time
