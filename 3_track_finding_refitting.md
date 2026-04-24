@@ -51,6 +51,7 @@ ddsim --steeringFile $STEERING_FILE \
       --numberOfEvents 1000 \
       --outputFile Tracking/test/testTrackFinder/out_sim_edm4hep.root
 ```
+This generates a sample with 10 GeV muons uniformly distributed in phi and cos(theta). 
 
 Let's have a look at the produced file (either directly on lxplus or download and use your local root install):
 ```
@@ -104,6 +105,7 @@ python3 checkFitResults.py Tracking/test/testTrackFitter/out_tracks_refitted.roo
 ```
 Now check out the output plot (D0_Z0_pT_resolution_and_chi2_p_value_log_likelihood.png):
 <img width="2800" height="600" alt="D0_Z0_pT_resolution_and_chi2_p_value_log_likelihood" src="https://github.com/user-attachments/assets/4159c46d-bcce-4239-8eb2-8ce010c2e6ac" />
+Since we generated 10 GeV muons uniformly in phi and cos(theta), to get a useful performance estimation, we'd need to generate more particles and bin in cos(theta).
 
 Beyond doing simple checks like this, work is ongoing to integrate tracking validation using CI/CD directly into Key4hep. The validation code will be hosted in [k4DetectorPerformance](https://github.com/key4hep/k4DetectorPerformance). A work-in-progress version of this code can be found under https://github.com/ArinaPon/k4DetectorPerformance/tree/pr-tracking-validation. More information on this can be found in [Arina Ponomareva's talk from 1st of April](https://indico.cern.ch/event/1664310/#48-tracking-performance-and-va).
 
