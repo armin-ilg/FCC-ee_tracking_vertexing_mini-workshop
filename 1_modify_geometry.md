@@ -59,12 +59,11 @@ Now that we managed to generate full simulation samples from the central release
 
 # Cloning k4geo and compiling it locally
 
-Let's clone [k4geo](https://github.com/key4hep/k4geo.git) (which hosts the detector geometry descriptions and algorithms to build the detectors using `DD4hep`). We actually use my branch of k4geo that updates the vertex detector and silicon wrapper used in IDEA and ALLEGRO. The pull request is not yet merged, but we can check it out in this way!
+Let's clone [k4geo](https://github.com/key4hep/k4geo.git) (which hosts the detector geometry descriptions and algorithms to build the detectors using `DD4hep`).
 
 ```
-git clone https://github.com/armin-ilg/lcgeo.git k4geo
+git clone https://github.com/key4hep/k4geo.git
 cd k4geo
-git switch -c curved_vertex_correction --track origin/curved_vertex_correction 
 mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=../InstallArea -DBoost_NO_BOOST_CMAKE=ON -D INSTALL_BEAMPIPE_STL_FILES=ON
