@@ -52,6 +52,23 @@ ddsim --steeringFile $STEERING_FILE \
       --outputFile Tracking/test/testTrackFinder/out_sim_edm4hep.root
 ```
 
+Let's have a look at the produced file (either directly on lxplus or download and use your local root install):
+```
+root Tracking/test/testTrackFinder/out_sim_edm4hep.root
+events->Draw("sqrt(VertexBarrelCollection.position.x^2+VertexBarrelCollection.position.y^2):VertexBarrelCollection.position.z")
+```
+
+You should be able to see the barrel structure of the IDEA vertex detector barrel:
+<img width="697" height="438" alt="Capture d’écran 2026-04-24 à 11 24 15" src="https://github.com/user-attachments/assets/2ab7df70-4c41-4ceb-88db-f3800db791ea" />
+
+Let's also have a look at the silicon wrapper:
+```
+events->Draw("SiWrDCollection.position.x:SiWrDCollection.position.y:SiWrDCollection.position.z")
+```
+<img width="694" height="474" alt="Capture d’écran 2026-04-24 à 11 27 04" src="https://github.com/user-attachments/assets/6280e912-e74a-4bce-8737-f3eb06355801" />
+Note: This is the old silicon wrapper version. Now, SiliconWrapper_o1_v02 is available inside IDEA_o1_v04.
+
+
 ## Run GGTF track finder (basically following `Tracking/test/testTrackFinder/test_trackFinder.sh`)
 
 Geometric Graph Track Finding (GGTF) is a ML-based tracking algorithm that can deal with an arbitrary detector geometry. 
@@ -67,6 +84,10 @@ TD=0.3
 
 k4run Tracking/test/testTrackFinder/runTestTrackFinder.py --inputFile Tracking/test/testTrackFinder/out_sim_edm4hep.root --outputFile Tracking/test/testTrackFinder/out_tracks.root --modelPath $MODEL_PATH --tbeta $TBETA --td $TD
 ```
+Finding the tracks in all 1000 files will take some minutes. 
+
+The ML model was trained on IDEA_o1_v03, so if you want to use another detector, retraining is needed (more details (https://github.com/key4hep/k4RecTracker/tree/main/Tracking#retraining-a-model)[here]).
+
 
 ## Run GenFit2 track fitter
 
@@ -76,12 +97,19 @@ GenFit2 (doi:10.48550/arXiv.1902.04405)[https://doi.org/10.48550/arXiv.1902.0440
 k4run Tracking/test/testTrackFitter/runTestTrackFitter.py --inputFile Tracking/test/testTrackFinder/out_tracks.root --outputFile Tracking/test/testTrackFitter/out_tracks_refitted.root
 ```
 
-The results can be validated with a simple script (thanks to Andrea de Vita (CERN) for sharing it!):
+The results can be validated with a simple script (thanks to Andrea de Vita (CERN) for sharing it!). It's, for the moment, hosted in this repository. Download it and run it:
 ```
-SCRIPT
+wget xxx
+python3 Tracking/test/testTrackFitter/out_tracks_refitted.root
 ```
+Now check out the output plot (D0_Z0_pT_resolution_and_chi2_p_value_log_likelihood.png):
+<img width="2800" height="600" alt="D0_Z0_pT_resolution_and_chi2_p_value_log_likelihood" src="https://github.com/user-attachments/assets/4159c46d-bcce-4239-8eb2-8ce010c2e6ac" />
 
 Beyond doing simple checks like this, work is ongoing to integrate tracking validation using CI/CD directly into Key4hep. The validation code will be hosted in [k4DetectorPerformance](https://github.com/key4hep/k4DetectorPerformance). A work-in-progress version of this code can be found under https://github.com/ArinaPon/k4DetectorPerformance/tree/pr-tracking-validation. More information on this can be found in [Arina Ponomareva's talk from 1st of April](https://indico.cern.ch/event/1664310/#48-tracking-performance-and-va).
+
+
+
+
 
 ## Get tracking validation code
 ```
