@@ -99,8 +99,8 @@ k4run Tracking/test/testTrackFitter/runTestTrackFitter.py --inputFile Tracking/t
 
 The results can be validated with a simple script (thanks to Andrea de Vita (CERN) for sharing it!). It's, for the moment, hosted in this repository. Download it and run it:
 ```
-wget xxx
-python3 Tracking/test/testTrackFitter/out_tracks_refitted.root
+wget https://raw.githubusercontent.com/armin-ilg/FCC-ee_tracking_vertexing_mini-workshop/refs/heads/main/checkFitResults.py
+python3 checkFitResults.py Tracking/test/testTrackFitter/out_tracks_refitted.root
 ```
 Now check out the output plot (D0_Z0_pT_resolution_and_chi2_p_value_log_likelihood.png):
 <img width="2800" height="600" alt="D0_Z0_pT_resolution_and_chi2_p_value_log_likelihood" src="https://github.com/user-attachments/assets/4159c46d-bcce-4239-8eb2-8ce010c2e6ac" />
