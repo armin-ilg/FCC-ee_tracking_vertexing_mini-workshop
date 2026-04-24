@@ -117,5 +117,7 @@ k4run run_digi_reco.py --dataFolder=./digi-files/ \
       --IOSvc.Input=ALLEGRO_o1_v03_mu10GeV.root
 ```
 
+TODO: Add pointer on where to edit code to tune the digitizers
+
 ## Run tracking script
 ...
