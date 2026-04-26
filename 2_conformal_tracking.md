@@ -217,7 +217,8 @@ in the `parameters` dictionary, at the entry `params`:
 ```
 You can find more details on their functioning in the same paper
 already mentioned above
-([arXiv:1908.00256](https://arxiv.org/abs/1908.00256)).
+([arXiv:1908.00256](https://arxiv.org/abs/1908.00256),
+see sections 2.2.1, 2.2.2 and 3.4.2).
 In that paper, the cellular tracks reconstruction
 is run multiple times updating the parameters at each iteration.
 The goal is to reconstruct harder cases after a first pass
