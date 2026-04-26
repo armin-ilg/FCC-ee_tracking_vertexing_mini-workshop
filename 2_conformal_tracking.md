@@ -251,11 +251,11 @@ python track_analysis.py
 ```
 
 
-You can now run now some experiments, for example:
+You can now run some experiments, for example:
 * How does the resolution change if we drop the Silicon Wrapper?
 * How sensitive is the track momentum resolution to the spatial resolution
   of the Wrapper? This will require updating smearing factors in the digitizers.
 * Is the resolution the same for electron and muons? 
 * Any dependence on particle momentum/angle?
 * What happens if we remove or add a layer to the vertex detector?
-* ... whatever else you can think of!
+* ...whatever else you can think of!
