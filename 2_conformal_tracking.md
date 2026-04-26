@@ -244,7 +244,7 @@ For now, you can use this simple script to produce basic histograms
 of track parameters and the track momentum resolution is roughly estimated.
 
 Copy the script to the `run` folder and edit it as you wish.
-Make sure the `input_path` in the first line is pointing to the
+Make sure the `input_path` at the beginning of the script is pointing to the
 correct input file and run it with:
 ```
 python track_analysis.py
