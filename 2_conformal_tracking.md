@@ -127,7 +127,8 @@ and the [silicon wrapper](https://github.com/HEP-FCC/FCC-config/blob/main/FCCee/
 
 # Conformal tracking with ALLEGRO/IDEA
 
-k4Reco has currently implemented a conformal tracking algorithm for CLD,
+[k4Reco](https://github.com/key4hep/k4Reco)
+has currently implemented a conformal tracking algorithm for CLD,
 which was initially designed for all-silicon trackers (-> CLIC).
 The latter implementation is extensively documented in
 [arXiv:1908.00256](https://arxiv.org/abs/1908.00256).
@@ -160,13 +161,14 @@ clone the `conf-trk-ALLEGRO` branch of the repository:
 # https://github.com/sfranchel/k4Reco/commit/ed4288a15454285038cc99514e0d04eb170ea7fb
 # The latter overrides the `createTrackStateAtCaloFace` function
 # not supported for ALLEGRO and adds a minimal working example.
+# Credits for this working example go to Andrea Sciandra and Ang Li!
 # Main repo should work in the near future.
 
 cd ../
 git clone -b conf-trk-ALLEGRO https://github.com/sfranchel/k4Reco.git
 ```
 
-Move in the `k4Rco` folder and compile:
+Move in the `k4Reco` folder and compile:
 ```bash
 cd k4Reco
 
@@ -186,17 +188,17 @@ k4_local_repo
 ## Run tracking script
 Move back to `run` folder, where you have generated events
 with the particle gun:
-```
+```bash
 cd ../run
 ```
 Now, to run the entire tracking chain
 (conformal tracking + track fitting),
 copy the file for the k4Reco checked out version:
-```
+```bash
 cp ../k4Reco/k4Reco/ConformalTracking/options/runConformalTracking_ALLEGRO.py .
 ```
 and run:
-```
+```bash
 k4run runConformalTracking_ALLEGRO.py --IOSvc.Input ALLEGRO_o1_v03_mu10GeV_digi_reco.root --IOSvc.Output ALLEGRO_o1_v03_mu10GeV_confTrk.root
 ```
 
@@ -226,4 +228,34 @@ A more complete configuration of the algorithm is reported in the original
 [`runConformalTracking.py`](https://github.com/key4hep/k4Reco/blob/33a4a90f2e1a5edbd1e8198e6418a3e2df2e459e/k4Reco/ConformalTracking/options/runConformalTracking.py#L98-L183) script.
 
 The output file contains the `NewSiTracks` which can now be analyzed.
+You can check the content of the output file and all the available
+collections with the command:
+```
+podio-dump ALLEGRO_o1_v03_mu10GeV_confTrk.root 
+```
 
+## Simple track analysis
+
+A very simple track analyzer script is provided in this repo: 
+[`track_analysis.py`](./track_analysis.py).
+A more proper validation of track fitting is done 
+in the third part of the tutorial.
+For now, you can use this simple script to produce basic histograms
+of track parameters and the track momentum resolution is roughly estimated.
+
+Copy the script to the `run` folder and edit it as you wish.
+Make sure the `input_path` in the first line is pointing to the
+correct input file and run it with:
+```
+python track_analysis.py
+```
+
+
+You can now run now some experiments, for example:
+* How does the resolution change if we drop the Silicon Wrapper?
+* How sensitive is the track momentum resolution to the spatial resolution
+  of the Wrapper? This will require updating smearing factors in the digitizers.
+* Is the resolution the same for electron and muons? 
+* Any dependence on particle momentum/angle?
+* What happens if we remove or add a layer to the vertex detector?
+* ... whatever else you can think of!
