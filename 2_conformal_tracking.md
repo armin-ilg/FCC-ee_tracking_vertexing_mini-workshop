@@ -176,7 +176,8 @@ cmake --build build --target install -j8
 # Required to use local installation of k4Reco
 k4_local_repo
 ```
-> [!IMPORTANT] Without the `k4_local_repo` command
+> [!IMPORTANT]
+> Without the `k4_local_repo` command
 > the central version of k4Reco is used, loaded from cvmfs. 
 > The latter command can be used to install local
 > versions of any repository of the key4hep stack,
@@ -225,3 +226,4 @@ A more complete configuration of the algorithm is reported in the original
 [`runConformalTracking.py`](https://github.com/key4hep/k4Reco/blob/33a4a90f2e1a5edbd1e8198e6418a3e2df2e459e/k4Reco/ConformalTracking/options/runConformalTracking.py#L98-L183) script.
 
 The output file contains the `NewSiTracks` which can now be analyzed.
+
