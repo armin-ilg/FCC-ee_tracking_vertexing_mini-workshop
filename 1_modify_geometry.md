@@ -63,6 +63,11 @@ Now that we managed to generate full simulation samples from the central release
 
 Let's clone [k4geo](https://github.com/key4hep/k4geo.git) (which hosts the detector geometry descriptions and algorithms to build the detectors using `DD4hep`).
 
+Make sure you have enough space on lxplus by doing
+```
+du -sch .[!.]* * |sort -h
+```
+
 ```
 git clone https://github.com/key4hep/k4geo.git
 cd k4geo
