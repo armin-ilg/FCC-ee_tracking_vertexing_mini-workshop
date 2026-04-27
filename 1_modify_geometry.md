@@ -89,6 +89,8 @@ The `k4_local_repo` command is important as we need to specify properly that we 
 
 Let's now look in more detail how the detectors are built, using ALLEGRO as an example. Open the file `FCCee/ALLEGRO/compact/ALLEGRO_o1_v03/ALLEGRO_o1_v03.xml` with your favourite file viewer. Also check out `FCCee/ALLEGRO/compact/ALLEGRO_o1_v03/DectDimensions.xml` which defines many dimensions of the ALLEGRO detector and its subdetectors. 
 
+More details on the properties of the different versions and options of the detector concepts can be found in READMEs in `FCCee/DETECTORCONCEPT/README.md', such as for example for IDEA under (https://github.com/key4hep/k4geo/blob/main/FCCee/IDEA/compact/README.md)[https://github.com/key4hep/k4geo/blob/main/FCCee/IDEA/compact/README.md].
+
 To look at the detector in more detail, we export it to a root file using the `scripts/save_detector_to_root.sh` script! Execute the following command:
 ```
 sh scripts/save_detector_to_root.sh FCCee/ALLEGRO/compact/ALLEGRO_o1_v03/ALLEGRO_o1_v03.xml
