@@ -46,6 +46,8 @@ ddsim --enableGun --gun.distribution uniform --gun.energy "10*GeV" --gun.particl
 Once the above is finished, we do some simplified digitisation and reconstruction:
 ```
 wget --no-clobber https://fccsw.web.cern.ch/fccsw/filesForSimDigiReco/IDEA/DataAlgFORGEANT.root
+wget --no-clobber https://fccsw.web.cern.ch/fccsw/filesForSimDigiReco/IDEA/IDEA_o1_v03/SimpleGatrIDEAv3o1.onnx
+
 k4run $FCCCONFIG/FullSim/IDEA/IDEA_o1_v03/run_digi_reco.py
 ```
 
