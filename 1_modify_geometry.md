@@ -33,6 +33,11 @@ Documentation on Key4hep can be found under https://key4hep.github.io/key4hep-do
 
 Let's use the stable Key4hep release we sourced to generate some SIM samples! Let's start with shooting an electron particle gun into IDEA:
 ```
+wget build/Tracking/test/inputFiles/SimpleGatrIDEAv3o1.onnx
+
+```
+
+```
 ddsim --enableGun --gun.distribution uniform --gun.energy "10*GeV" --gun.particle e- --numberOfEvents 10 --outputFile IDEA_sim.root --random.enableEventSeed --random.seed 42 --compactFile $K4GEO/FCCee/IDEA/compact/IDEA_o1_v03/IDEA_o1_v03.xml --steeringFile $FCCCONFIG/FullSim/IDEA/IDEA_o1_v03/SteeringFile_IDEA_o1_v03.py
 ```
 
