@@ -50,7 +50,7 @@ You can download the resulting root file and look at the particle collections in
 ```
 edm4hep2json -e 0  IDEA_sim_digi_reco.root
 ```
-Download this file and go to the Phoenix visualisation tool on [https://fccsw.web.cern.ch/fccsw/phoenix/fccee-idea/o1_v03](https://fccsw.web.cern.ch/fccsw/phoenix/fccee-idea/o1_v03). Load the json event (under 'import and export options') and open the detector (with 'Geometry clipping'). You should be able to see a track and associated calorimetry clusters!
+Download this file and go to the Phoenix visualisation tool on https://fccsw.web.cern.ch/fccsw/phoenix/ . Load the json event (under 'import and export options') and open the detector (with 'Geometry clipping'). You should be able to see a track and associated calorimetry clusters!
 
 <img width="1258" height="441" alt="Capture d’écran 2026-04-20 à 11 41 22" src="https://github.com/user-attachments/assets/cbe2f6e4-2bf7-4f8c-a387-69b82face4b4" />
 
